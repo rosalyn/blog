@@ -1,0 +1,134 @@
+%header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav{:role => "banner"}
+  %div.container
+    %div.navbar-header
+      %button.navbar-toggle{:type => "button", "data-toggle" => "collapse", "data-target" => ".bs-navbar-collapse"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "index.html"} enjoymyvibes
+    %nav.collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
+      %form.navbar-form.navbar-right{:role => "search"}
+        %div.form-group
+          %input.form-control{:type => "text", :placeholder => "Search"}
+        %button.btn.btn-default{:type => "submit"} Submit
+      %ul.nav.navbar-nav
+        %li.active
+          = link_to "Home", root_path
+        %li
+          = link_to "Contact", contact_path
+        %li
+          = link_to "About", about_path
+
+%div#body.container
+  %div.row
+    %div.col-md-8
+      %h1
+        BLOG
+
+      = link_to 'New article', new_article_path
+
+      - @articles.each do |article|
+        %article
+          %div.row
+            %div.group1.col-sm-6.col-md-6
+            %div.group2.col-sm-6.col-md-6
+
+          %hr/
+
+          %img.img-responsive{:src => "http://placehold.it/900x300"}
+
+          %h2= link_to article.title, article_with_title_path(article, :title => article.title)
+
+          %br/
+
+          %p= article.text
+
+          %div.row
+            %div.group1.col-sm-6.col-md-6
+              %i.fa.fa-play= link_to 'More', article_path(article)
+            %div.group2.col-sm-6.col-md-6
+              %i.fa.fa-pencil= link_to 'Edit', edit_article_path(article)
+              %i.fa.fa-trash= link_to 'Destroy', article_path(article),  |
+                                      method: :delete,                   |
+                                      data: { confirm: 'Are you sure?' } |
+
+    %div.col-md-4
+      %div.well.text-center
+        %p.lead Don't want to miss updates? Please click the below button!
+        %button.btn.btn-primary.btn-lg
+          Subscribe to my feed
+      %div.panel.panel-default
+        %div.panel-heading
+          %h4 Latest Posts
+        %ul.list-group
+          %li.list-group-item
+            %a{:href => "singlepost.html"} 1. Aries Sun Sign March 21 - April 19
+          %li.list-group-item
+            %a{:href => "singlepost.html"} 2. Taurus Sun Sign April 20 - May 20
+          %li.list-group-item
+            %a{:href => "singlepost.html"} 3. Gemini Sun Sign May 21 - June 21
+          %li.list-group-item
+            %a{:href => "singlepost.html"} 4. Cancer Sun Sign June 22 - July 22
+          %li.list-group-item
+            %a{:href => "singlepost.html"} 5. Leo Sun Sign July 23 - August 22
+      %div.panel.panel-default
+        %div.panel-heading
+          %h4 Categories
+        %ul.list-group
+          %li.list-group-item
+            %a{:href => "#"} Signs
+          %li.list-group-item
+            %a{:href => "#"} Elements
+          %li.list-group-item
+            %a{:href => "#"} Planets
+          %li.list-group-item
+            %a{:href => "#"} Cusps
+          %li.list-group-item
+            %a{:href => "#"} Compatibility
+      %div.panel.panel-default
+        %div.panel-heading
+          %h4 Recent Comments
+        %ul.list-group
+          %li.list-group-item
+            %a{:href => "#"} I don't believe in astrology but still your writing style is really great! - 
+            %em john
+          %li.list-group-item
+            %a{:href => "#"} Wow.. what you said is really true! I'm an aries though - 
+            %em Anto
+          %li.list-group-item
+            %a{:href => "#"} Does capricorn and aries is compatibile? -
+            %em Sarah
+          %li.list-group-item
+            %a{:href => "#"} I'm a cancer woman been in love with Leo. Will this work?
+            %em Mary
+      %div.panel.panel-default
+        %div.panel-heading
+          %h4 Tags
+        %div.panel-body
+          %ul.list-inline
+            %li
+              %a{:href => "#"} Aries
+            %li
+              %a{:href => "#"} Fire
+            %li
+              %a{:href => "#"} Mars
+            %li
+              %a{:href => "#"} Taurus
+            %li
+              %a{:href => "#"} Earth
+            %li
+              %a{:href => "#"} Moon
+            %li
+              %a{:href => "#"} Gemini
+            %li
+              %a{:href => "#"} Air
+            %li
+              %a{:href => "#"} Mercury
+            %li
+              %a{:href => "#"} Cancer
+
+%footer
+  %div.container
+    %hr/
+    %p.text-center Copyright © enjoymyvibes 2015. All rights reserved.

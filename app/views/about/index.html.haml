@@ -1,0 +1,71 @@
+%header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav{:role => "banner"}
+  %div.container
+    %div.navbar-header
+      %button.navbar-toggle{:type => "button", "data-toggle" => "collapse", "data-target" => ".bs-navbar-collapse"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "index.html"} enjoymyvibes
+    %nav.collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
+      %form.navbar-form.navbar-right{:role => "search"}
+        %div.form-group
+          %input.form-control{:type => "text", :placeholder => "Search"}
+        %button.btn.btn-default{:type => "submit"} Submit
+      %ul.nav.navbar-nav
+        %li
+          = link_to "Home", root_path
+        %li
+          = link_to "Contact", contact_path
+        %li.active
+          = link_to "About", about_path
+
+%div.container
+  %h1 About Me
+
+  %div.row
+    %div.col-md-3.col-sm-3
+      %img.img-thumbnail.img-responsive.photo{:src => "http://placehold.it/300x350"}
+    %div.col-md-9.col-sm-9
+      %p
+        Hi, my real name is Rosalyn. I'm all about surrounding myself with good vibes and giving positive energy through personal style, speech, and mannerisms. I believe change starts with yourself and that only positive energy attracts positive energy. Positive energy. Blah.
+      %p
+        I don't know how to fill this paragraph more, so, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+
+  %p.social-buttons.text-center
+    %button{:type => "button", :class => "btn btn-primary btn-lg"} Follow me on Instagram
+    %button{:type => "button", :class => "btn btn-default btn-lg"} Follow me on Twitter
+    
+  %div.row
+    %div.col-md-4
+      %div.thumbnail
+        %a{:href => "#"}
+          %img.img-responsive{:src => "http://placehold.it/300x450"}
+        %div.caption.text-center
+          %h4 Signs and compatabilities
+          %p Rs. 1200 only
+          %button.btn.btn-sm.btn-success
+            buy now!
+    %div.col-md-4
+      %div.thumbnail
+        %a{:href => "#"}
+          %img.img-responsive{:src => "http://placehold.it/300x450"}
+        %div.caption.text-center
+          %h4 All About Astrology
+          %p Rs. 1200 only
+          %button.btn.btn-sm.btn-success
+            buy now!
+    %div.col-md-4
+      %div.thumbnail
+        %a{:href => "#"}
+          %img.img-responsive{:src => "http://placehold.it/300x450"}
+        %div.caption.text-center
+          %h4 Why believe in astrology?
+          %p Rs. 1200 only
+          %button.btn.btn-sm.btn-success
+            buy now!
+
+%footer
+  %div.container
+    %hr/
+    %p.text-center Copyright © enjoymyvibes 2015. All rights reserved.
