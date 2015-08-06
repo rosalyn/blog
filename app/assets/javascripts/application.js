@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
@@ -18,5 +19,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
+
+$(document).foundation();

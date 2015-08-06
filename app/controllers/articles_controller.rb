@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  before_filter :authenticate, except: [:index, :show]
 
   def index
     @articles = Article.all
@@ -46,6 +46,12 @@ class ArticlesController < ApplicationController
   end
 
   private
+    def authenticate
+      authenticate_or_request_with_http_basic do |name, password|
+        name == "admin" && password == "secret"
+      end
+    end
+
     def article_params
       params.require(:article).permit(:title, :text)
     end
