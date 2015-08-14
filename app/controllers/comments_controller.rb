@@ -4,19 +4,27 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
-    respond_to do |format|
-      format.html { redirect_to @article }
-      format.js
+    @comment = @article.comments.build(comment_params)
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to article_path(@article) }
+        format.js
+      end
     end
-    redirect_to article_path(@article)
+    #redirect_to article_path(@article)
   end
 
   def destroy
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.destroy
-    redirect_to article_path(@article)
+    respond_to do |format|
+      format.html do
+        flash[:success] = 'Comment deleted.'
+        redirect_to article_path(@article)
+      end
+      format.js
+    end
   end
  
   private

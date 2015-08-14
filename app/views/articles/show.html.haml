@@ -6,6 +6,9 @@
 = link_to 'Back', articles_path
 
 %h2 Comments
+%h4#comments-count
+  = pluralize(@article.comments.count, 'comment')
+%hr/
 %div#comments
   = render @article.comments
 

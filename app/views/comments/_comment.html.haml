@@ -1,13 +1,11 @@
 = div_for comment do
-  %p
-    = comment.body
+  %h4
+    = comment.commenter
   %p
     %strong
       Posted #{time_ago_in_words(comment.created_at)} ago
-  %br/
-  = comment.commenter
+  %p
+    = comment.body
 
   %p
-    = link_to 'Destroy Comment', [comment.article, comment],        |
-                                 method: :delete,                   |
-                                 data: { confirm: 'Are you sure?' } |
+    = link_to 'Destroy Comment', article_comment_path(comment.article, comment), method: :delete, remote: true, data: { confirm: 'Are you sure?' }
