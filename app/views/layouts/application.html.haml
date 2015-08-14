@@ -17,12 +17,16 @@
 
   %title= content_for?(:title) ? yield(:title) : "Untitled"
 
-  = stylesheet_link_tag "application"
+  = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
   = javascript_include_tag "vendor/custom.modernizr"
-  = csrf_meta_tag
+  = csrf_meta_tags
 
-%body
+%body{"data-no-turbolink" => ""}
+  = render 'layouts/header'
+  
+  %div.container
+    = yield
 
-  = yield
+  = render 'layouts/footer'
 
-  = javascript_include_tag "application"
+  = javascript_include_tag "application", "data-turbolinks-track" => true
