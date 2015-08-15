@@ -18,13 +18,42 @@
   %title= content_for?(:title) ? yield(:title) : "Untitled"
 
   = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+  = stylesheet_link_tag "application", "http://fonts.googleapis.com/css?family=Droid+Sans:400,700"
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tags
 
 %body{"data-no-turbolink" => ""}
-  = render 'layouts/header'
-  
-  %div.container
+
+  %div#sidebar
+    %div#logo
+      //= image_tag "vibe_beyonce.png"
+
+    %ul
+      %li.category Website
+      %li= link_to "About", about_path
+      %li= link_to "Contact", contact_path
+
+    %ul
+      %li.category Social
+      %li= link_to "Twitter", "https://twitter.com/rozalghul"
+      %li= link_to "Instagram", "https://instagram.com/rozalghul/"
+      %li= link_to "Email", "mailto:rosariee.ku@gmail.com"
+
+    %p.sign_in Admin Login
+
+  %div.container#main_content
+    %div#header
+      - if current_page?(root_path)
+        %p All posts
+      - elsif current_page?(about_path)
+        %p About
+      - else
+        = link_to "Back to All Posts", root_path
+
+      %div.buttons
+        %button.button= link_to "New Post", new_article_path
+        %button.button Log Out
+    
     = yield
 
   = render 'layouts/footer'

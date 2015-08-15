@@ -1,11 +1,12 @@
-= div_for comment do
-  %h4
-    = comment.commenter
-  %p
-    %strong
-      Posted #{time_ago_in_words(comment.created_at)} ago
-  %p
-    = comment.body
+%div.comment.clearfix
+  = div_for(comment, :class => "comment_content") do
+    %h4.comment_name
+      = comment.commenter
+    %p.comment_time
+      %strong
+        Posted #{time_ago_in_words(comment.created_at)} ago
+    %p.comment_body
+      = comment.body
 
-  %p
-    = link_to 'Destroy Comment', article_comment_path(comment.article, comment), method: :delete, remote: true, data: { confirm: 'Are you sure?' }
+    %p
+      = link_to 'Delete', article_comment_path(comment.article, comment), method: :delete, class: "button", remote: true, data: { confirm: 'Are you sure?' }

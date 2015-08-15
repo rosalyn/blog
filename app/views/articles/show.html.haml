@@ -3,15 +3,19 @@
 = render :partial => @article
 
 = link_to 'Edit', edit_article_path(@article)
+|
+= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }
+|
 = link_to 'Back', articles_path
 
-%h2 Comments
-%h4#comments-count
-  = pluralize(@article.comments.count, 'comment')
-%hr/
 %div#comments
-  = render @article.comments
+  %h2 Comments
+  %h4#comments-count
+    = pluralize(@article.comments.count, 'comment')
+  %hr/
+  %div#comments
+    = render @article.comments
 
-%h2
-  Leave a comment:
-= render 'comments/form'
+  %h2
+    Leave a comment:
+  = render 'comments/form'

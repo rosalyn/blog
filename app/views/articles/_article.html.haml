@@ -1,5 +1,10 @@
-%h2
-  = link_to_unless_current article.title, article
+%div.article_content
 
-%p
-  = simple_format article.text
+  %h2.title
+    = link_to_unless_current article.title, article
+
+  %p.date
+    = time_tag(@article.created_at)
+
+  %p.body
+    = simple_format article.text
