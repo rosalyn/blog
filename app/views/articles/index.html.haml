@@ -9,7 +9,11 @@
 
           %h2.title= link_to article.title, article_with_title_path(article, :title => article.title)
 
-          %p.date= article.created_at.strftime("%B %d, %Y")
+          %p
+            %span.date= article.created_at.strftime("%B %d, %Y")
+            - if article.tags.any?
+              in
+              %span.tag= article.tags.map { |t| t.name }.join(", ")
 
           %img.img-responsive{:src => "http://placehold.it/900x300"}
 
