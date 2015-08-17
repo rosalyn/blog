@@ -1,21 +1,12 @@
-%p#notice= notice
+%div#article_content.article_wrapper
 
-= render :partial => @article
+  = render :partial => @article
 
-= link_to 'Edit', edit_article_path(@article)
-|
-= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }
-|
-= link_to 'Back', articles_path
-
-%div#comments
-  %h2 Comments
-  %h4#comments-count
-    = pluralize(@article.comments.count, 'comment')
-  %hr/
   %div#comments
+    %h2#comments-count
+      = pluralize(@article.comments.count, 'comment')
     = render @article.comments
 
-  %h2
-    Leave a comment:
-  = render 'comments/form'
+    %h3
+      Leave a comment:
+    = render 'comments/form'

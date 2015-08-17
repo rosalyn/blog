@@ -5,6 +5,7 @@
 /[if IE 8 ]    <html class=\"ie8\" lang=\"en\">
 /[if IE 9 ]    <html class=\"ie9\" lang=\"en\">
 /[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
+%p#notice= notice
 
 %head
   %meta{ :charset => "utf-8" }
@@ -24,35 +25,44 @@
 
 %body{"data-no-turbolink" => ""}
 
-  %div#sidebar
-    %div#logo
-      //= image_tag "vibe_beyonce.png"
+  %div.sidebar-nav{:role => "banner"}
+    %div.navbar-header
+      %button.navbar-toggle{:type => "button", "data-toggle" => "collapse", "data-target" => ".sidebar-navbar-collapse"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %div#logo
+        = link_to root_path do
+          = image_tag "vibe_beyonce.png", :class => "img-responsive"
+    %div.navbar-collapse.collapse.sidebar-navbar-collapse{:role => "navigation"}
 
-    %ul
-      %li.category Website
-      %li= link_to "About", about_path
-      %li= link_to "Contact", contact_path
+      %ul.nav.navbar-nav
+        %li.category BLOG
+        %li= link_to "MAIN", root_path
+        %li= link_to "ABOUT", about_path
+        %li= link_to "CONTACT", contact_path
 
-    %ul
-      %li.category Social
-      %li= link_to "Twitter", "https://twitter.com/rozalghul"
-      %li= link_to "Instagram", "https://instagram.com/rozalghul/"
-      %li= link_to "Email", "mailto:rosariee.ku@gmail.com"
 
-    %p.sign_in Admin Login
+        %li.category Social
+        %li= link_to "TWITTER", "https://twitter.com/rozalghul"
+        %li= link_to "INSTAGRAM", "https://instagram.com/rozalghul/"
+        %li= link_to "EMAIL", "mailto:rosariee.ku@gmail.com"
 
-  %div.container#main_content
-    %div#header
-      - if current_page?(root_path)
-        %p All posts
-      - elsif current_page?(about_path)
-        %p About
-      - else
-        = link_to "Back to All Posts", root_path
 
-      %div.buttons
-        %button.button= link_to "New Post", new_article_path
-        %button.button Log Out
+  %div#main_content
+    - if user_signed_in?
+      %div#header
+        %div.buttons
+          %button.button= link_to "New Post", new_article_path
+          %button.button= link_to "Log Out", destroy_user_session_path, :method => :delete
+    - else
+      %div.sign_in
+        = link_to new_user_session_path do
+          = content_tag(:i, "", :class => "fa fa-circle-o-notch")
+
+    - flash.each do |name, msg|
+      = content_tag(:div, msg, class: "alert")
     
     = yield
 

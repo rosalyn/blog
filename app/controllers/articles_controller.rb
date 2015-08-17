@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
   before_filter :authenticate, except: [:index, :show]
+  before_filter :check_for_cancel, only: [:create, :update]
 
   def index
     @articles = Article.all.order('created_at DESC')
@@ -8,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @articles = Article.order("created_at DESC").limit(5).offset(1)
   end
 
   def new
@@ -49,6 +51,12 @@ class ArticlesController < ApplicationController
     def authenticate
       authenticate_or_request_with_http_basic do |name, password|
         name == "admin" && password == "secret"
+      end
+    end
+
+    def check_for_cancel
+      if (params.key?("cancel"))
+        redirect_to articles_path
       end
     end
 
