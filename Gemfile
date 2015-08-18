@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.1'
 
 gem 'haml'
 gem "haml-rails", "~> 0.9"
@@ -8,6 +9,7 @@ gem "font-awesome-rails"
 gem "zurb-foundation", "~> 4.0.0"
 gem "devise", "~> 3.4.0"
 gem "redcarpet"
+gem "heroku"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
