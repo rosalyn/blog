@@ -6,11 +6,19 @@ gem "bootstrap-sass", "~> 3.3.5"
 gem "autoprefixer-rails"
 gem "font-awesome-rails"
 gem "zurb-foundation", "~> 4.0.0"
+gem "devise", "~> 3.4.0"
+gem "redcarpet"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
