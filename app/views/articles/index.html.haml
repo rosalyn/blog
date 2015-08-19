@@ -15,11 +15,13 @@
               in
               %span.tag= article.tags.map { |t| t.name }.join(", ")
 
-          %img.img-responsive{:src => "http://placehold.it/900x300"}
+          %p
+          - if article.image?
+            %img= image_tag(article.image_url, :class => "img-responsive") 
 
           %br/
 
-          %p= truncate( markdown(article.text), length: 200, :omission => "...", :escape => false)
+          %p= truncate( markdown(article.text), length: 300, :omission => "...", :escape => false)
 
           %div.row
             %div.group1.col-sm-6.col-md-6

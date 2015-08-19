@@ -4,6 +4,9 @@
 %p.date
   = time_tag(@article.created_at)
 
+%p.image
+  = image_tag(@article.image_url, :class => "img-responsive") if @article.image.present?
+
 %p.body
   = markdown article.text
 
