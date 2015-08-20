@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include ArticlesHelper
 
   before_filter :authenticate, except: [:index, :show]
   before_filter :check_for_cancel, only: [:create, :update]
@@ -60,7 +61,7 @@ class ArticlesController < ApplicationController
       end
     end
 
-    def article_params
-      params.require(:article).permit(:title, :text, :image, tags_attributes: [:name])
-    end
+    #def article_params
+    # params.require(:article).permit(:title, :text, :image, tags_attributes: [:name])
+    #end
 end

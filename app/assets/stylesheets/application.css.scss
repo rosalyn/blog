@@ -316,6 +316,11 @@ a {
   }
 }
 
+.tag a {
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
 @media (min-width: 768px) {
   .sign_in {
     display: block;

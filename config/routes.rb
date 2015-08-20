@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+  resources :tags
   
   match '/articles/:id/:title' => 'articles#show', :via => [:get], :as => :article_with_title
 

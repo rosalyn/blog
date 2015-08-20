@@ -9,8 +9,15 @@
 
           %h2.title= link_to article.title, article_with_title_path(article, :title => article.title)
 
+          %br/
+
           %p
             %span.date= article.created_at.strftime("%B %d, %Y")
+            - if article.tags.any?
+              in
+              - article.tags.each do |tag|
+                %span.tag
+                  = link_to tag.name, tag_path(tag)
 
           %p
           - if article.image?

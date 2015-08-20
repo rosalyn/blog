@@ -12,6 +12,13 @@
 
 %br/
 
+%p.tag
+  Under
+  - @article.tags.each do |tag|
+    = link_to tag.name, tag_path(tag)
+
+%br/
+
 - if user_signed_in?
   = link_to 'Edit', edit_article_path(@article)
   |
