@@ -13,5 +13,6 @@ class DropTags < ActiveRecord::Migration
     add_index :tags, :articles
   end
   def change
+    drop_table :tags
   end
 end
