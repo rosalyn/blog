@@ -48,16 +48,10 @@
         %div.panel-heading
           %h4 Categories
         %ul.list-group
-          %li.list-group-item
-            %a{:href => "#"} Signs
-          %li.list-group-item
-            %a{:href => "#"} Elements
-          %li.list-group-item
-            %a{:href => "#"} Planets
-          %li.list-group-item
-            %a{:href => "#"} Cusps
-          %li.list-group-item
-            %a{:href => "#"} Compatibility
+          - Tag.all.to_a.each do |t|
+            %li.list-group-item
+              = link_to t.name, tag_path(t)
+          
       %div.panel
         %div.panel-heading
           %h4 Recent Comments
