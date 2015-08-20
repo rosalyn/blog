@@ -1,16 +1,16 @@
 class DropTags < ActiveRecord::Migration
   def up
-    drop_table :tablename
+    drop_table :tags
   end
 
   def down
-    create_table :tablename do |t|
-      t.string :table_column
-      t.references :anothertable
+    create_table :tags do |t|
+      t.string :name
+      t.references :article
 
       t.timestamps        
     end
-    add_index :tablenames, :anothertable_id
+    add_index :tags, :articles
   end
   def change
   end
