@@ -1,4 +1,3 @@
-- @article.tags.build
 = form_for @article, :html => {:multipart => true} do |f|
 
   - if @article.errors.any?
@@ -23,9 +22,6 @@
     = f.label :text
     %br/
     = f.text_area :text
-
-  %h2 Tags
-  = render :partial => 'tags/form', :locals => {:form => f}
 
   %p
     = f.submit

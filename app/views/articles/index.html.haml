@@ -11,9 +11,6 @@
 
           %p
             %span.date= article.created_at.strftime("%B %d, %Y")
-            - if article.tags.any?
-              in
-              %span.tag= article.tags.map { |t| t.name }.join(", ")
 
           %p
           - if article.image?

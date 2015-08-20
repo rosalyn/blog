@@ -10,9 +10,6 @@
 %p.body
   = markdown article.text
 
-%p.tags
-  = @article.tags.map { |t| t.name }.join(", ")
-
 %br/
 
 - if user_signed_in?
